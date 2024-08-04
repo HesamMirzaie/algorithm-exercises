@@ -28,12 +28,31 @@ function areThereDuplicatesV2(...arr) {
   let left = 0;
   let right = arr.length - 1;
   while (left < right) {
-    if (arr[left] === arr[right]) {
+    if (arr[left] === arr[right] && left !== right) {
       return true;
     } else if (arr[left] !== arr[right]) {
       right--;
+    } else if (left === right) {
+      left++;
+      right = arr.length - 1;
     }
   }
   return false;
 }
-console.log(areThereDuplicatesV2('a', 'b', 'c', 'a'));
+console.log(areThereDuplicatesV2('a', 'b', 'c', 'b'));
+
+function areThereDuplicatesV3(...arr) {
+  let left = 0;
+  let right = 1;
+
+  while (right < arr.length) {
+    if (arr[left] === arr[right]) {
+      return true;
+    }
+    left++;
+    right++;
+  }
+
+  return false;
+}
+console.log(areThereDuplicatesV3('a', 'b', 'c', 'b'));
