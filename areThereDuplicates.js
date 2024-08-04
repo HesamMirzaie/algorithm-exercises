@@ -13,10 +13,13 @@ Time - O(n log n)
 Space - O(1)
 **/
 
-// Solution 1: Time Complexity: O(n)
-// const areThereDuplicates = (...arr) => [...new Set(arr)];
-// console.log(areThereDuplicates('a', 'b', 'c', 'a'));
+// Solution 1: Frequency Counter
+function areThereDuplicatesV1(...arr) {
+  let freqCounter = {};
 
-// Solution 2: Time Complexity: O(n logn)
-function areThereDuplicatesV2(...arr) {}
-console.log(areThereDuplicatesV2('a', 'b', 'c', 'a'));
+  for (let item of arr) {
+    freqCounter[item] = freqCounter[item] + 1 || 1;
+    if (freqCounter[item] > 1) return true;
+  }
+  return false;
+}
