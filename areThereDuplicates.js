@@ -43,6 +43,7 @@ function areThereDuplicatesV2(...arr) {
 function areThereDuplicatesV3(...arr) {
   let left = 0;
   let right = left + 1;
+  arr.sort();
 
   while (right < arr.length) {
     if (arr[left] === arr[right]) {
