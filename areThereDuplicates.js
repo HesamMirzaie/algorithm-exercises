@@ -39,11 +39,10 @@ function areThereDuplicatesV2(...arr) {
   }
   return false;
 }
-console.log(areThereDuplicatesV2('a', 'b', 'c', 'b'));
 
 function areThereDuplicatesV3(...arr) {
   let left = 0;
-  let right = 1;
+  let right = left + 1;
 
   while (right < arr.length) {
     if (arr[left] === arr[right]) {
@@ -55,4 +54,5 @@ function areThereDuplicatesV3(...arr) {
 
   return false;
 }
-console.log(areThereDuplicatesV3('a', 'b', 'c', 'b'));
+console.log(areThereDuplicatesV2(1, 2, 1));
+console.log(areThereDuplicatesV3(1, 2, 1));
