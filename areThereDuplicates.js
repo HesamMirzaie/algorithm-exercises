@@ -13,6 +13,10 @@ Time - O(n log n)
 Space - O(1)
 **/
 
-function areThereDuplicates() {
-  // good luck. (supply any arguments you deem necessary.)
-}
+// Solution 1: Time Complexity: O(n)
+// const areThereDuplicates = (...arr) => [...new Set(arr)];
+// console.log(areThereDuplicates('a', 'b', 'c', 'a'));
+
+// Solution 2: Time Complexity: O(n logn)
+function areThereDuplicatesV2(...arr) {}
+console.log(areThereDuplicatesV2('a', 'b', 'c', 'a'));
