@@ -10,7 +10,38 @@ sameFrequency (34,14) // false
 sameFrequency (3589578, 5879385) // true 
 sameFrequency (22,222) // false
 **/
+// Solution 1: O(N^2)
+function sameFrequencyV1(...arr) {
+  let digit = arr.map((i) => i.toString().split(''));
+  let isTrue = false;
+  if (digit[0].length !== digit[1].length) {
+    return false;
+  }
+  for (item of digit[0]) {
+    if (digit[1].includes(item)) {
+      isTrue = true;
+    } else {
+      return false;
+    }
+  }
+  return isTrue;
+}
 
-function sameFrequency(){
-  // good luck. Add any arguments you deem necessary.
+// Solution 2: Frequency Counter O(N)
+
+function sameFrequencyV2(num1, num2) {
+  const strNum1 = num1.toString();
+  const strNum2 = num2.toString();
+  let freqCounter1 = {};
+  let freqCounter2 = {};
+  for (item of strNum2) {
+    freqCounter1[item] = freqCounter1[item] + 1 || 1;
+  }
+  for (item of strNum1) {
+    freqCounter2[item] = freqCounter2[item] + 1 || 1;
+  }
+  if (JSON.stringify(freqCounter1) === JSON.stringify(freqCounter2)) {
+    return true;
+  }
+  return false;
 }
