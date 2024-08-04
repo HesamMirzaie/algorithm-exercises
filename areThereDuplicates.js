@@ -13,7 +13,7 @@ Time - O(n log n)
 Space - O(1)
 **/
 
-// Solution 1: Frequency Counter
+// Solution 1: Frequency Counter O(n)
 function areThereDuplicatesV1(...arr) {
   let freqCounter = {};
 
@@ -23,3 +23,17 @@ function areThereDuplicatesV1(...arr) {
   }
   return false;
 }
+// Solution 1: Multiple Pointers
+function areThereDuplicatesV2(...arr) {
+  let left = 0;
+  let right = arr.length - 1;
+  while (left < right) {
+    if (arr[left] === arr[right]) {
+      return true;
+    } else if (arr[left] !== arr[right]) {
+      right--;
+    }
+  }
+  return false;
+}
+console.log(areThereDuplicatesV2('a', 'b', 'c', 'a'));
