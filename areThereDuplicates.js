@@ -23,27 +23,16 @@ function areThereDuplicatesV1(...arr) {
   }
   return false;
 }
-// Solution 1: Multiple Pointers
-function areThereDuplicatesV2(...arr) {
-  let left = 0;
-  let right = arr.length - 1;
-  while (left < right) {
-    if (arr[left] === arr[right] && left !== right) {
-      return true;
-    } else if (arr[left] !== arr[right]) {
-      right--;
-    } else if (left === right) {
-      left++;
-      right = arr.length - 1;
-    }
-  }
-  return false;
-}
+console.log(areThereDuplicatesV1(1, 2, 1, 2, 1, 1, 1));
 
-function areThereDuplicatesV3(...arr) {
+// Solution 1: Mulitple Pointer O(n log n)
+
+function areThereDuplicatesV2(...arr) {
+  console.log(arr);
+  arr.sort();
+  console.log(arr);
   let left = 0;
   let right = left + 1;
-  arr.sort();
 
   while (right < arr.length) {
     if (arr[left] === arr[right]) {
@@ -55,5 +44,4 @@ function areThereDuplicatesV3(...arr) {
 
   return false;
 }
-console.log(areThereDuplicatesV2(1, 2, 1));
-console.log(areThereDuplicatesV3(1, 2, 1));
+console.log(areThereDuplicatesV2(1, 2, 1, 2, 1, 1, 1));
