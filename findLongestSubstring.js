@@ -14,15 +14,22 @@ findLongestSubstring('thisishowwedoit') should return 6 because the longest subs
 Time Complexity - O(n)
 **/
 
-// Solution 1: Frequency Counter O(n^2)
-function findLongestSubstringV1(str) {
-  const freqCounter = {};
-  for (let i = 0; i < str.length; i++) {
-    freqCounter[str[i]] = freqCounter[str[i]] + 1 || 1;
-    // console.log(freqCounter);
-    if (Object.values(freqCounter).includes(2)) {
-      break;
+function findLongestSubstring(str) {
+  let start = 0;
+  let maxLength = 0;
+  const charIndexMap = {};
+
+  for (let end = 0; end < str.length; end++) {
+    const char = str[end];
+
+    if (charIndexMap[char] !== undefined && charIndexMap[char] >= start) {
+      start = charIndexMap[char] + 1;
     }
+
+    charIndexMap[char] = end;
+    maxLength = Math.max(maxLength, end - start + 1);
   }
-  return Object.keys(freqCounter).length;
+
+  return maxLength;
 }
+console.log(findLongestSubstring('thisishowwedoit'));
