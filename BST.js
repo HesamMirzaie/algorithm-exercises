@@ -14,13 +14,14 @@ class BinarySearchTree {
   constructor() {
     this.root = null;
   }
+
   insert(value) {
-    var newNode = new Node(value);
+    let newNode = new Node(value);
     if (this.root === null) {
       this.root = newNode;
       return this;
     }
-    var current = this.root;
+    let current = this.root;
     while (true) {
       if (value === current.value) return undefined;
       if (value < current.value) {
@@ -38,6 +39,7 @@ class BinarySearchTree {
       }
     }
   }
+
   find(value) {
     let nowRoot = this.root;
     while (nowRoot !== null) {
@@ -51,8 +53,19 @@ class BinarySearchTree {
     }
     return undefined;
   }
+
   contains(value) {
-    // return true or false if the contains the given value or not
+    let nowRoot = this.root;
+    while (nowRoot !== null) {
+      if (value === nowRoot.value) {
+        return true;
+      } else if (value > nowRoot.value) {
+        nowRoot = nowRoot.right;
+      } else {
+        nowRoot = nowRoot.left;
+      }
+    }
+    return false;
   }
 }
 
