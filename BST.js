@@ -80,3 +80,4 @@ myNode.insert(4);
 myNode.insert(7);
 myNode.insert(13);
 console.log(myNode.find(6));
+console.log(myNode.contains(14));
