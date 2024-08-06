@@ -17,9 +17,7 @@ Space Complexity - 0(1)
 **/
 
 function maxSubarraySum(arr, num) {
-  if (num > arr.length) {
-    return null;
-  }
+  if (num > arr.length) return null;
 
   let max = 0;
   let currSum = 0;
