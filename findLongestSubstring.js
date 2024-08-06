@@ -17,16 +17,16 @@ Time Complexity - O(n)
 function findLongestSubstring(str) {
   let start = 0;
   let maxLength = 0;
-  const charIndexMap = {};
+  const charObj = {};
 
   for (let end = 0; end < str.length; end++) {
     const char = str[end];
 
-    if (charIndexMap[char] !== undefined && charIndexMap[char] >= start) {
-      start = charIndexMap[char] + 1;
+    if (charObj[char] !== undefined && charObj[char] >= start) {
+      start = charObj[char] + 1;
     }
 
-    charIndexMap[char] = end;
+    charObj[char] = end;
     maxLength = Math.max(maxLength, end - start + 1);
   }
 

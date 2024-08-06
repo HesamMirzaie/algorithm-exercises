@@ -30,15 +30,17 @@ class Stack {
     if (!this.last) {
       return undefined;
     }
+    let curr;
     if (this.last === this.first) {
+      curr = this.first;
       this.last = null;
       this.first = null;
-      this.size = 0;
+    } else {
+      curr = this.first;
+      this.first = this.first.next;
     }
-    let temp = this.first;
-    this.first = this.first.next;
     this.size--;
-    return temp.value;
+    return curr;
   }
 }
 const newStack = new Stack();
@@ -47,5 +49,5 @@ newStack.push(15);
 newStack.push(17);
 newStack.push(19);
 console.log(newStack);
-newStack.pop();
+console.log(newStack.pop());
 console.log(newStack);

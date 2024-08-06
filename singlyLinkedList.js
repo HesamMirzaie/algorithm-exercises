@@ -48,29 +48,24 @@ class SinglyLinkedList {
   shift() {
     // code here
     if (!this.head) return undefined;
-    let current;
+    let current = this.head;
     if (this.length === 1) {
-      current = this.head;
       this.head = null;
-      return current;
+      this.tail = null;
     } else {
-      current = this.head;
       this.head = this.head.next;
     }
     this.length--;
     return current;
   }
   unshift(val) {
-    // code here
-
     const newNode = new Node(val);
-    let curr = this.head;
     if (!this.head) {
       this.head = newNode;
       this.tail = newNode;
     } else {
+      newNode.next = this.head;
       this.head = newNode;
-      newNode.next = curr;
     }
     this.length++;
     return this.length;
@@ -143,6 +138,8 @@ class SinglyLinkedList {
 
 const newList = new SinglyLinkedList();
 
-console.log(newList);
 newList.unshift(5);
+newList.unshift(6);
+newList.shift();
+newList.unshift(7);
 console.log(newList);
