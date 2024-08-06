@@ -1,7 +1,3 @@
-/**
-add shift and unshift functionalities to the following SinglyLinkedList
-**/
-
 class Node {
   constructor(val) {
     this.val = val;
