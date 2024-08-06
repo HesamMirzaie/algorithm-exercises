@@ -28,9 +28,7 @@ console.log(areThereDuplicatesV1(1, 2, 1, 2, 1, 1, 1));
 // Solution 1: Mulitple Pointer O(n log n)
 
 function areThereDuplicatesV2(...arr) {
-  console.log(arr);
   arr.sort();
-  console.log(arr);
   let left = 0;
   let right = left + 1;
 
