@@ -32,14 +32,14 @@ class Queue {
     if (!this.first) {
       return null;
     }
-    const temp = this.first;
+    const curr = this.first;
     if (this.first === this.last) {
       this.first = null;
-      return temp.value;
+      return curr;
     }
     this.first = this.first.next;
     this.size--;
-    return temp.value;
+    return curr;
   }
 }
 
