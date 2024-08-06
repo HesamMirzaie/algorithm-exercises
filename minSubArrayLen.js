@@ -15,7 +15,6 @@ Time Complexity - O(n)
 Space Complexity - O(1)
 **/
 
-
-function minSubArrayLen(){
+function minSubArrayLen() {
   // add whatever parameters you deem necessary - good luck!
 }
