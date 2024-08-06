@@ -21,9 +21,11 @@ function maxSubarraySum(arr, num) {
 
   let max = 0;
   let currSum = 0;
+
   for (let i = 0; i < num; i++) {
     max += arr[i];
   }
+
   currSum = max;
 
   for (let i = num; i < arr.length; i++) {
