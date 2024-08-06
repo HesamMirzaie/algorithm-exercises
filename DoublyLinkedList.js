@@ -68,15 +68,43 @@ class DoublyLinkedList {
     return this;
   }
   get(index) {
-    // code here
+    if (index < 0 || index >= this.length) return null;
+    var counter = 0;
+    var current = this.head;
+    while (counter !== index) {
+      current = current.next;
+      counter++;
+    }
+    return current;
   }
   set(index, val) {
-    // code here
+    var foundNode = this.get(index);
+    if (foundNode) {
+      foundNode.val = val;
+      return true;
+    }
+    return false;
   }
   insert(index, val) {
+    if (index < 0 || index > this.length) return false;
+    if (index === this.length) return !!this.push(val);
+    if (index === 0) return !!this.unshift(val);
+
+    let newNode = new Node(val);
+    let prevNode = this.get(index - 1);
+    let nextNode = prevNode.next;
+    prevNode.next = newNode;
+    newNode.prev = prevNode;
+    newNode.next = nextNode;
+    if (nextNode) {
+      nextNode.prevNode = newNode;
+    }
+    this.length++;
+    return true;
     // code here
   }
 }
+
 const newList = new DoublyLinkedList();
 newList.push(12);
 console.log(newList.head.val);
@@ -90,14 +118,9 @@ newList.push(14);
 console.log(newList.head.val);
 console.log(newList.tail.val);
 console.log('----------------------');
-newList.pop();
+newList.unshift(11);
 console.log(newList.head.val);
 console.log(newList.tail.val);
-console.log('----------------------');
-newList.shift();
-console.log(newList.head.val);
-console.log(newList.tail.val);
-console.log('----------------------');
-newList.unshift(12);
-console.log(newList.head.val);
-console.log(newList.tail.val);
+const add = newList.set(2, 11);
+console.log(add);
+newList.insert(2, 18);
