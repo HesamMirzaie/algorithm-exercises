@@ -21,15 +21,17 @@ function findLongestSubstring(str) {
 
   for (let end = 0; end < str.length; end++) {
     const char = str[end];
+    console.log(charObj, start);
+    console.log(charObj[char] >= start);
 
     if (charObj[char] !== undefined && charObj[char] >= start) {
       start = charObj[char] + 1;
     }
-
     charObj[char] = end;
     maxLength = Math.max(maxLength, end - start + 1);
   }
 
   return maxLength;
 }
+
 console.log(findLongestSubstring('thisishowwedoit'));
