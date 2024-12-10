@@ -1,53 +1,70 @@
-// implement the pop functionality
+class Node<T> {
+  value: T;
+  next: Node<T> | null;
 
-class Node {
-  constructor(value) {
+  constructor(value: T) {
     this.value = value;
     this.next = null;
   }
 }
 
-class Stack {
+class Stack<T> {
+  private first: Node<T> | null;
+  private last: Node<T> | null;
+  private size: number;
+
   constructor() {
     this.first = null;
     this.last = null;
     this.size = 0;
   }
-  push(val) {
-    var newNode = new Node(val);
+
+  push(val: T): number {
+    const newNode = new Node(val);
     if (!this.first) {
       this.first = newNode;
       this.last = newNode;
     } else {
-      var temp = this.first;
+      newNode.next = this.first;
       this.first = newNode;
-      this.first.next = temp;
     }
     return ++this.size;
   }
-  pop() {
-    // code here
-    if (!this.last) {
+
+  pop(): T | undefined {
+    if (!this.first) {
       return undefined;
     }
-    let curr;
-    if (this.last === this.first) {
-      curr = this.first;
-      this.last = null;
-      this.first = null;
-    } else {
-      curr = this.first;
-      this.first = this.first.next;
-    }
+
+    const poppedNode = this.first;
+    this.first = this.first.next;
     this.size--;
-    return curr;
+
+    poppedNode.next = null;
+    if (this.size === 0) {
+      this.last = null;
+    }
+
+    return poppedNode.value;
+  }
+
+  getSize(): number {
+    return this.size;
+  }
+
+  isEmpty(): boolean {
+    return this.size === 0;
+  }
+
+  clear(): void {
+    while (this.first) {
+      const temp = this.first;
+      this.first = this.first.next;
+      temp.next = null;
+    }
+    this.last = null;
+    this.size = 0;
   }
 }
+
 const newStack = new Stack();
-newStack.push(12);
-newStack.push(15);
-newStack.push(17);
-newStack.push(19);
-console.log(newStack);
-console.log(newStack.pop());
-console.log(newStack);
